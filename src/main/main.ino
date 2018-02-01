@@ -1,24 +1,21 @@
-#define SOLENOID1 2
-#define SOLENOID2 3
+#include "solenoid.h"
 
 void setup() {
-  // put your setup code here, to run once:
 
-  pinMode(SOLENOID1, OUTPUT);
-  pinMode(SOLENOID2, OUTPUT);
+  solenoid_init(SOLENOID1);
+  solenoid_init(SOLENOID2);
 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
 
-  digitalWrite(SOLENOID1, HIGH);
-  digitalWrite(SOLENOID2, HIGH);
+  solenoid_open(SOLENOID1);
+  solenoid_open(SOLENOID2);
 
   delay(1000);
 
-  digitalWrite(SOLENOID1, LOW);
-  digitalWrite(SOLENOID2, LOW);
+  solenoid_close(SOLENOID1);
+  solenoid_close(SOLENOID2);
 
   delay(1000);
 
