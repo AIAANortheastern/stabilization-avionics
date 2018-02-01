@@ -1,4 +1,4 @@
-#include "solenoid.h"
+#include "Solenoid.h"
 
 void setup() {
 
