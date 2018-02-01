@@ -41,6 +41,22 @@ To keep everything consistent and readable, some naming conventions should be us
 	
 * make sure everything in the body of your header files is within the "include guards". These ensure that the body of the header file is only included once. This makes the compiler much happier.
 	
-* also include extern "C" at the beginning of your header to avoid issues with Arduino being based in c++
+* also include 
+	` #ifdef __cplusplus
+		extern "C" {
+	  #endif`
+	at the beginning of your header and
+	` #ifdef __cplusplus
+		}
+	  #endif`
+	at the end of your header to avoid issues with Arduino linking our c headers to a c++ (.ino) file
 
 * use camelCase for variables and snake_case for functions (that's what avionics is doing, so things will mess nicely later)
+
+Github practices:
+
+* use at least one other person as a reviewer on your merges, preferably include me as one
+* when you have merged a branch to master and are done with it, delete it to keep things clean
+* create a branch to make a change then merge back with master in a reasonable amount of time, having branches out for long periods of time causes them to fall behind and leads to unnecessary merge conflicts
+
+I'll have someone (Doug) revise and add to this since I am in no way a github expert
