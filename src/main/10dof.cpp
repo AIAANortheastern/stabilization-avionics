@@ -66,7 +66,7 @@ void init(void)
     @brief  Constantly check the roll/pitch/heading/altitude/temperature
 */
 /**************************************************************************/
-void sensor_task(void)
+void sensor_print_data(void)
 {
   sensors_event_t accel_event;
   sensors_event_t mag_event;

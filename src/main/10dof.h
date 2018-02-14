@@ -11,6 +11,6 @@
 
 void init_sensors(void);
 void init(void);
-void sensor_task(void);
+void sensor_print_data(void);
 
 #endif
