@@ -1,10 +1,6 @@
 #ifndef _SENSORTASK_H
 #define _SENSORTASK_H
 
-#ifdef _cplusplus
-extern "C" {
-#endif
-
 #include <Wire.h>
 #include "Adafruit_Sensor.h"
 #include "Adafruit_LSM303_U.h"
@@ -54,9 +50,5 @@ typedef struct sensor_data_s
 
 void sensor_init(void);
 void sensor_task(sensor_data_t *gSensorData);
-
-#ifdef _cplusplus
-}
-#endif
 
 #endif
