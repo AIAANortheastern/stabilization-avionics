@@ -53,7 +53,7 @@ typedef struct sensor_data_s
 }sensor_data_t;
 
 void sensor_init(void);
-void sensor_task(void);
+void sensor_task(sensor_data_t *gSensorData);
 
 #ifdef _cplusplus
 }

@@ -1,6 +1,8 @@
 #include "Solenoid.h"
 #include "SensorTask.h"
 
+sensor_data_t gSensorData;
+
 void setup() {
 
   solenoid_init(SOLENOID1);
@@ -15,7 +17,7 @@ void loop() {
   solenoid_open(SOLENOID1);
   solenoid_open(SOLENOID2);
 
-  sensor_task();
+  sensor_task(&gSensorData);
 
   solenoid_close(SOLENOID1);
   solenoid_close(SOLENOID2);
