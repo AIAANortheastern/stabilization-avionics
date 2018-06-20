@@ -50,5 +50,6 @@ typedef struct sensor_data_s
 
 void sensor_init(void);
 void sensor_task(sensor_data_t *gSensorData);
+void sensor_print(sensor_data_t *gSensorData);
 
 #endif
