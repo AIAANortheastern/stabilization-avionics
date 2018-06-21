@@ -82,3 +82,26 @@ void sensor_task(sensor_data_t *gSensorData){
 	}
 	
 }
+
+void sensor_print(sensor_data_t *gSensorData){
+
+  Serial.print(millis());
+  Serial.print(",");
+  
+  Serial.print(gSensorData->accel.x);
+  Serial.print(",");
+  Serial.print(gSensorData->accel.y);
+  Serial.print(",");
+  Serial.print(gSensorData->accel.z);
+  
+  Serial.print(",");
+  Serial.print(gSensorData->gyro.x);
+  Serial.print(",");
+  Serial.print(gSensorData->gyro.y);
+  Serial.print(",");
+  Serial.print(gSensorData->gyro.z);
+  Serial.print("\n");
+  
+  
+}
+
