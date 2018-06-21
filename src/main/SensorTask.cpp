@@ -101,7 +101,38 @@ void sensor_print(sensor_data_t *gSensorData){
   Serial.print(",");
   Serial.print(gSensorData->gyro.z);
   Serial.print("\n");
+   
+}
+
+void state_print(double x[12]){
   
+  Serial.print(x[0]);
+  Serial.print(",");
+  Serial.print(x[1]);
+  Serial.print(",");
+  Serial.print(x[2]);
   
+  Serial.print(",");
+  Serial.print(x[3]);
+  Serial.print(",");
+  Serial.print(x[4]);
+  Serial.print(",");
+  Serial.print(x[5]);
+
+  Serial.print(",");
+  Serial.print(x[6]);
+  Serial.print(",");
+  Serial.print(x[7]);
+  Serial.print(",");
+  Serial.print(x[8]);
+
+  Serial.print(",");
+  Serial.print(x[9]);
+  Serial.print(",");
+  Serial.print(x[10]);
+  Serial.print(",");
+  Serial.print(x[11]);
+  
+  Serial.print("\n");
 }
 
