@@ -1,21 +1,21 @@
 #include "Solenoid.h"
 #include "SensorTask.h"
-#include "KalmanFilter.h"
-#include "rt_nonfinite.h"
-#include "KalmanFilter_Initialize.h"
+//#include "KalmanFilter.h"
+//#include "rt_nonfinite.h"
+//#include "KalmanFilter_Initialize.h"
 
 sensor_data_t gSensorData;
 
 double rawSensorData[6];
-double state[12];
-double calibration[12];
-double output[12];
+//double state[12];
+//double calibration[12];
+//double output[12];
 
 void setup() {
-
+/*
   solenoid_init(SOLENOID1);
   solenoid_init(SOLENOID2);
-  KalmanFilter_initialize();
+  //KalmanFilter_initialize();
 
   state[0] = 0;
   state[1] = 0;
@@ -45,9 +45,10 @@ void setup() {
   
 
   delay(2000);
+  */
   
   sensor_init();
-
+/*
   delay(1000);
 
   for(int i = 0; i < 1000; i++){
@@ -92,13 +93,13 @@ void setup() {
   calibration[9] = calibration[9]/10;
   calibration[10] = calibration[10]/10;
   calibration[11] = calibration[11]/10 - 9.81;
-
+*/
 }
 
 void loop() {
 
   sensor_task(&gSensorData);
-
+/*
   rawSensorData[0] = gSensorData.gyro.x;
   rawSensorData[1] = gSensorData.gyro.y;
   rawSensorData[2] = gSensorData.gyro.z;
@@ -120,7 +121,7 @@ void loop() {
   output[9] = state[9] - calibration[9];
   output[10] = state[10] - calibration[10];
   output[11] = state[11] - calibration[11];
-
-  state_print(output);
-
+*/
+  //state_print(output);
+  log_raw(&gSensorData);
 }

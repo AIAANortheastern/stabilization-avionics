@@ -1,4 +1,6 @@
 #include "SensorTask.h"
+#include <SD.h>
+#include <SPI.h>
 
 /* Assign a unique ID to the sensors */
 Adafruit_LSM303_Accel_Unified accel = Adafruit_LSM303_Accel_Unified(30301);
@@ -10,6 +12,10 @@ sensors_event_t accel_event;
 sensors_event_t mag_event;
 sensors_event_t gyro_event;
 sensors_event_t bmp_event;
+
+const int chipSelect = BUILTIN_SDCARD;
+
+File dataLog;
 
 /* 
  * initialize sensors
@@ -44,12 +50,21 @@ void sensor_init(void){
 		Serial.println("barometer not detected");
 		while(1);
 	}
+ Serial.println("sensors initialized.");
+
+  /* initialize SD Card */
+ if (!SD.begin(chipSelect)) {
+    Serial.println("Card failed, or not present");
+    // don't do anything more:
+    return;
+  }
+  Serial.println("card initialized.");
 	
 }
 
 /*
  * poll sensors for data
- * log new data in ggSensorData
+ * log new data in gSensorData
  *
  */
 void sensor_task(sensor_data_t *gSensorData){
@@ -134,5 +149,31 @@ void state_print(double x[12]){
   Serial.print(x[11]);
   
   Serial.print("\n");
+}
+
+
+void log_raw(sensor_data_t *gSensorData){
+
+  dataLog = SD.open("datalog.txt", FILE_WRITE);
+
+  dataLog.print(millis());
+  dataLog.print(",");
+  
+  dataLog.print(gSensorData->accel.x);
+  dataLog.print(",");
+  dataLog.print(gSensorData->accel.y);
+  dataLog.print(",");
+  dataLog.print(gSensorData->accel.z);
+  
+  dataLog.print(",");
+  dataLog.print(gSensorData->gyro.x);
+  dataLog.print(",");
+  dataLog.print(gSensorData->gyro.y);
+  dataLog.print(",");
+  dataLog.print(gSensorData->gyro.z);
+  dataLog.print("\n");
+
+  dataLog.close();
+   
 }
 

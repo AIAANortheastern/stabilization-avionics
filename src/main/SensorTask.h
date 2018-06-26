@@ -2,6 +2,8 @@
 #define _SENSORTASK_H
 
 #include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
 #include "Adafruit_Sensor.h"
 #include "Adafruit_LSM303_U.h"
 #include "Adafruit_BMP085_U.h"
@@ -52,5 +54,6 @@ void sensor_init(void);
 void sensor_task(sensor_data_t *gSensorData);
 void sensor_print(sensor_data_t *gSensorData);
 void state_print(double x[12]);
+void log_raw(sensor_data_t *gSensorData);
 
 #endif
